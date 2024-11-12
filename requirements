@@ -1,1 +1,8 @@
-
+streamlit
+easyocr
+pytesseract
+fitz
+pillow
+pyzbar
+requests
+datetime
