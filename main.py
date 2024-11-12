@@ -6,6 +6,7 @@ from datetime import datetime
 from settings_page import setup_flat_name, setup_roommates, add_roommate, display_roommates, settingspage, change_flat_name, manage_roommates, remove_roommate
 from fridge_page import delete_product_from_inventory, add_product_to_inventory, fridge_page, ensure_roommate_entries
 from barcode_page import decode_barcode, get_product_info, display_total_expenses, display_purchases, barcode_page
+from recipe_page import recipepage
 
 # Initialization of session state variables
 if "flate_name" not in st.session_state:
@@ -24,6 +25,14 @@ if "purchases" not in st.session_state:
     st.session_state["purchases"] = {mate: [] for mate in st.session_state["roommates"]}
 if "consumed" not in st.session_state:
     st.session_state["consumed"] = {mate: [] for mate in st.session_state["roommates"]}
+if "recipe_suggestions" not in st.session_state:
+    st.session_state["recipe_suggestions"] = []
+if "selected_recipe" not in st.session_state:
+    st.session_state["selected_recipe"] = None
+if "selected_recipe_link" not in st.session_state:
+    st.session_state["selected_recipe_link"] = None
+if "cooking_history" not in st.session_state:
+    st.session_state["cooking_history"] = []    
 
 
 # Function to change pages
@@ -64,7 +73,7 @@ elif st.session_state["page"] == "fridge":
 elif st.session_state["page"] == "scan":
     barcode_page()
 elif st.session_state["page"] == "recipes":
-    recipes_page()
+    recipepage()
 elif st.session_state["page"] == "settings":
     if not st.session_state["setup_finished"]:
         if st.session_state["flate_name"] == "":

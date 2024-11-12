@@ -114,4 +114,3 @@ if uploaded_file is not None:
         st.write("Es konnten keine Artikel aus dem Text extrahiert werden.")
 
 
-
